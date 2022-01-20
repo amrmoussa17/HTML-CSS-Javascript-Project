@@ -53,6 +53,71 @@ ul {
     margin-bottom: 50px;
 }
 /* End Components */
+/* Start settings box */
+.settings-container {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.settings-container.open {
+    left: 0;
+}
+.settings-container .icon-box {
+    position: absolute;
+    top: 100px;
+    right: -40px;
+    width: 40px;
+    text-align: center;
+    font-size: 24px;
+    background-color: white;
+    padding: 8px 5px;
+    cursor: pointer;
+}
+.settings-container .color-settings {
+    padding: 0 20px 20px;
+    background-color: #eee;
+    margin: 15px;
+}
+.settings-container .color-settings .colors-list {
+
+}
+.settings-container .color-settings .colors-list li {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    opacity: 0.3;
+    cursor: pointer;
+}
+.settings-container .color-settings .colors-list li.active {
+    opacity: 1;
+}
+.settings-container .color-settings .colors-list li:nth-child(1) {
+    background-color: #ff9800;
+}
+.settings-container .color-settings .colors-list li:nth-child(2) {
+    background-color: #E91E63;
+}
+.settings-container .color-settings .colors-list li:nth-child(3) {
+    background-color: #009688;
+}
+.settings-container .color-settings .colors-list li:nth-child(4){
+    background-color: #03A9F4;
+}
+.settings-container .color-settings .colors-list li:nth-child(5) {
+    background-color: #4CAF50;
+}
+.settings-container .color-settings {
+}
+/* End settings box */
 /* Start landing  */
 .landing {
     background-image: url(/imgs/01.jpg);
