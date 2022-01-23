@@ -100,3 +100,57 @@ skillsProgress.forEach((span) => {
     span.style.setProperty('width', span.dataset.prog);
 })
 
+// start popup box on  every gallery img click
+
+let galleryImgs = document.querySelectorAll('.gallery img')
+
+galleryImgs.forEach((img) => {
+    img.addEventListener('click', () => {
+
+        // create overlay 
+        let overlay = document.createElement('div');
+        overlay.className = "popup-overlay";
+        document.body.appendChild(overlay);
+
+        // create popup box element
+        let popupBox = document.createElement('div');
+        popupBox.className = "popup-box";
+
+        // create popup header
+        let popupHeader = document.createElement('h4');
+        popupHeader.textContent = img.alt;
+        popupHeader.className = "popup-header";
+
+        // append popup header
+        popupBox.appendChild(popupHeader);
+
+        // create popup img element
+        let popImage = document.createElement('img');
+        popImage.className = "popup-img"
+        
+        // define img source
+        popImage.src = img.src;
+
+        // append image to popup box
+        popupBox.appendChild(popImage);
+
+        // create popup close button
+        let popupClose = document.createElement('i');
+        popupClose.className = "popup-close fas fa-times-circle"
+       
+        // append popup close button
+        popupBox.appendChild(popupClose);
+
+        // append popup box to document 
+        document.body.appendChild(popupBox);
+
+        let closeButton = document.querySelector('.popup-close')
+        closeButton.addEventListener('click', () => {
+            document.querySelector('.popup-box').remove();
+            document.querySelector('.popup-overlay').remove();
+        })
+    })
+})
+
+
+
