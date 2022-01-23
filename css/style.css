@@ -460,5 +460,52 @@ ul {
     margin: 32px 0 4px 0;
 }
 /* End Testimonials  */
-
-
+/* Start Contact Us  */
+.contact {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.contact .container {
+    background-image: url(/imgs/contact.png);
+    background-size: cover;
+}
+.contact .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.contact .content .col-1,
+.contact .content .col-2 {
+    margin-right: 20px;
+}
+.contact form  input,
+.contact form  textarea {
+    display: block;
+    padding: 10px;
+    width: 350px;
+    margin-bottom: 10px;
+}
+.contact form  input:focus,
+.contact form  textarea:focus {
+    outline: 1px solid var(--main-color);
+}
+.contact form  textarea {
+    height: 150px;
+}
+.contact form .col-2 .button {
+    width: 350px;
+    padding: 10px;
+    background-color: var(--main-color);
+    color: white;
+    text-align:center;
+    cursor: pointer;
+}
+/* End Contact Us  */
+/* Start Footer */
+footer {
+    padding: 20px;
+    color: white;
+    text-align: center;
+    background-color: rgb(51, 51, 51);
+}
+/* End Footer */
