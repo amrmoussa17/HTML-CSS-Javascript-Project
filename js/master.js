@@ -47,10 +47,11 @@ const randomize =  function() {
     const randomNumber =  Math.floor( Math.random() * imgsArray.length);
     // change background img
     landingSection.style.cssText = `background-image: url(/imgs/${imgsArray[randomNumber]})`
-}, 10000);
+}, 1000);
 };
 // check local storage
 let backgroundRandom = localStorage.getItem('backgroundRandom');
+console.log(backgroundRandom);
 if (backgroundRandom != null) {
     //remove active from both buttons
     backgroundButtons.forEach((ele) => {
@@ -100,7 +101,7 @@ skillsProgress.forEach((span) => {
     span.style.setProperty('width', span.dataset.prog);
 })
 
-// start popup box on  every gallery img click
+// start popup box on every gallery img click
 
 let galleryImgs = document.querySelectorAll('.gallery img')
 
@@ -149,6 +150,58 @@ galleryImgs.forEach((img) => {
             document.querySelector('.popup-box').remove();
             document.querySelector('.popup-overlay').remove();
         })
+    })
+})
+
+//  nav bullets on the right to scroll into view sections on click
+const bullets = document.querySelectorAll('.nav-bullets .bullet');
+bullets.forEach( (bullet) => {
+    bullet.addEventListener('click', () => {
+        document.querySelector('.'+ bullet.dataset.section).scrollIntoView({
+            behavior: 'smooth'
+        })
+    })
+})
+
+// settings box nav bullets display 
+const bulletsButtons = document.querySelectorAll('.settings-container .bullets-settings .button');
+const navBullets = document.querySelector('.nav-bullets');
+let navStatus = localStorage.getItem('navStatus');
+if (navStatus != null) {
+    if (navStatus === 'true') {
+        bulletsButtons.forEach( (button) => {
+            if (button.dataset.bullets == 'yes') {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        })
+        navBullets.style.display = "block";
+    } else {
+        bulletsButtons.forEach( (button) => {
+            if (button.dataset.bullets == 'yes') {
+                button.classList.remove('active');
+            } else {
+                button.classList.add('active');
+            }
+        })
+        navBullets.style.display = "none";
+    }
+} 
+
+bulletsButtons.forEach( (button) => {
+    button.addEventListener('click', (e) => {
+        if (e.target.dataset.bullets === 'yes') {
+            navBullets.style.display = "block";
+            button.classList.add('active');
+            bulletsButtons[1].classList.remove('active');
+            localStorage.setItem('navStatus', 'true');
+        } else {
+            navBullets.style.display = "none";
+            button.classList.add('active');
+            bulletsButtons[0].classList.remove('active');
+            localStorage.setItem('navStatus', 'false');
+        }
     })
 })
 

@@ -113,27 +113,79 @@ ul {
 .settings-container .color-settings .colors-list li:nth-child(5) {
     background-color: #4CAF50;
 }
-.settings-container .background-settings {
+.settings-container .background-settings,
+.settings-container .bullets-settings
+ {
     padding: 0 20px 20px;
     background-color: #eee;
     margin: 15px;
 }
-.settings-container .background-settings h4 {
+.settings-container h4 {
     font-size: 14px;
 }
-.settings-container .background-settings .button {
+.settings-container .button {
     display: inline-block;
     width: 60px;
     text-align: center;
     padding: 5px;
-    background-color: #4CAF50;
+    background-color: var(--main-color);
     cursor: pointer;
     opacity: 0.5;
 }
-.settings-container .background-settings .button.active {
+.settings-container .button.active {
     opacity: 1;
 }
 /* End settings box */
+/* Start nav bullets */
+.nav-bullets {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 20000;
+}
+.nav-bullets .bullet {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--main-color);
+    background-color: transparent;
+    margin-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+}
+.nav-bullets .bullet:hover::before,
+.nav-bullets .bullet:hover::after {
+    display: block;
+}     
+.nav-bullets .bullet::before {
+    content: attr(data-section);
+    width: 90px;
+    padding: 6px 18px;
+    color: white;
+    position: absolute;
+    top: -4px;
+    left: -140px;
+    background-color: var(--main-color);
+    font-size: 14px;
+    text-align: center;
+    cursor: default;
+    pointer-events: none;
+    display: none;
+}
+.nav-bullets .bullet::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -14px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--main-color);
+    cursor: default;
+    pointer-events: none;
+    display: none;
+}
+/* End nav bullets */
 /* Start landing  */
 .landing {
     background-image: url(/imgs/01.jpg);
@@ -157,6 +209,9 @@ ul {
 .landing header .links li a {
     text-decoration: none;
     color: white;
+}
+.landing header .links li a:hover {
+    color: var(--main-color);
 }
 .landing .text {
     text-align: center;
