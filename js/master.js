@@ -8,7 +8,6 @@ iconBox.addEventListener('click', () => {
 })
 // color box settings
 const mainColor = localStorage.getItem('mainColor');
-colorBox = document.querySelector(".color-settings .colors-list");
 colorItems = document.querySelectorAll(".color-settings .colors-list li")
 // check local storage to check if main-color is set to value
 if (mainColor != null) {
@@ -22,16 +21,18 @@ if (mainColor != null) {
         }
     })
 }
-colorBox.addEventListener('click', (evt) => {
-    const colorOption = evt.target.dataset.color;
-    document.documentElement.style.setProperty('--main-color', colorOption);
-    localStorage.setItem('mainColor',colorOption);
-    colorItems.forEach( (item) => {
-        item.classList.remove('active');
-    })
-    evt.target.classList.add('active');
-});
-
+// add click event on every color item to set main color and add active class 
+colorItems.forEach((item) => {
+    item.addEventListener('click', (evt) => {
+        const colorOption = evt.target.dataset.color;
+        document.documentElement.style.setProperty('--main-color', colorOption);
+        localStorage.setItem('mainColor',colorOption);
+        colorItems.forEach( (item) => {
+            item.classList.remove('active');
+        })
+        evt.target.classList.add('active');
+    });
+})
 /* 
     settings box setting random background option
 */ 
@@ -51,7 +52,6 @@ const randomize =  function() {
 };
 // check local storage
 let backgroundRandom = localStorage.getItem('backgroundRandom');
-console.log(backgroundRandom);
 if (backgroundRandom != null) {
     //remove active from both buttons
     backgroundButtons.forEach((ele) => {
@@ -155,13 +155,25 @@ galleryImgs.forEach((img) => {
 
 //  nav bullets on the right to scroll into view sections on click
 const bullets = document.querySelectorAll('.nav-bullets .bullet');
-bullets.forEach( (bullet) => {
-    bullet.addEventListener('click', () => {
-        document.querySelector('.'+ bullet.dataset.section).scrollIntoView({
-            behavior: 'smooth'
+const links = document.querySelectorAll('.landing .links li a');
+
+// create function to scroll header nav bar links and nav-bullets
+function scrollHtmlLinks(myLinks) {
+    myLinks.forEach( (myLink) => {
+        myLink.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            document.querySelector('.'+ myLink.dataset.section).scrollIntoView({
+                behavior: 'smooth'
+            })
         })
     })
-})
+}
+
+// scroll nav-bullets 
+scrollHtmlLinks(bullets);
+
+// scroll nav bar links
+scrollHtmlLinks(links);
 
 // settings box nav bullets display 
 const bulletsButtons = document.querySelectorAll('.settings-container .bullets-settings .button');
@@ -205,5 +217,9 @@ bulletsButtons.forEach( (button) => {
     })
 })
 
-
+// reset button
+document.querySelector('#reset-button').addEventListener('click', () => {
+    localStorage.clear();
+    window.location.reload();
+})
 

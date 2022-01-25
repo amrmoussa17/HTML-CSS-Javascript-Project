@@ -113,17 +113,18 @@ ul {
 .settings-container .color-settings .colors-list li:nth-child(5) {
     background-color: #4CAF50;
 }
-.settings-container .background-settings,
-.settings-container .bullets-settings
- {
+.settings-container .options-box {
     padding: 0 20px 20px;
     background-color: #eee;
     margin: 15px;
 }
-.settings-container h4 {
+.settings-container .reset-settings.options-box {
+    width: 164px;;
+}
+.settings-container .options-box h4 {
     font-size: 14px;
 }
-.settings-container .button {
+.settings-container .options-box .button {
     display: inline-block;
     width: 60px;
     text-align: center;
@@ -132,7 +133,7 @@ ul {
     cursor: pointer;
     opacity: 0.5;
 }
-.settings-container .button.active {
+.settings-container .options-box .button.active {
     opacity: 1;
 }
 /* End settings box */
