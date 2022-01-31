@@ -94,12 +94,18 @@ backgroundButtons.forEach((button) => {
     })
 });
 
-/* start skills */
+/* animate skills (increase span width on scroll) */
 
-const skillsProgress = document.querySelectorAll(".skills .progress-bar span")
-skillsProgress.forEach((span) => {
-    span.style.setProperty('width', span.dataset.prog);
+const skillsProgress = document.querySelectorAll(".skills .progress-bar span");
+const skillsSection = document.querySelector(".skills");
+window.addEventListener('scroll', () => {
+    if (window.scrollY >= skillsSection.offsetTop - 200) {
+        skillsProgress.forEach((span) => {
+            span.style.setProperty('width', span.dataset.prog);
+        })
+    }
 })
+
 
 // start popup box on every gallery img click
 
